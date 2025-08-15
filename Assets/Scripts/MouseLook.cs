@@ -6,6 +6,7 @@ public class MouseLook : MonoBehaviour
 {
     [SerializeField] float sensitivity;
     [SerializeField] float maxAngle = 90f;
+    public Transform rotPoint;
     float rotY = 0;
     Camera cam;
     void Start()
@@ -17,7 +18,7 @@ public class MouseLook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(0,Input.GetAxis("Mouse X")*sensitivity,0);
+        rotPoint.Rotate(0,Input.GetAxis("Mouse X")*sensitivity,0);
         
         rotY += Input.GetAxis("Mouse Y") * sensitivity;
         rotY = Mathf.Clamp(rotY,-maxAngle,maxAngle);
