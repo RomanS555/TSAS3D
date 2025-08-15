@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(playerTriggerCollision))]
 public class Move_player : MonoBehaviour
 {
     [SerializeField] private float
@@ -64,7 +64,7 @@ public class Move_player : MonoBehaviour
         Debug.Log(normalGround);
         if (isGround) rb.velocity = (ml.rotPoint.forward * axeZ + ml.rotPoint.right * axeX) * normalGround * Time.deltaTime * moveSpeed + Vector3.up * rb.velocity.y;
         else if (!isWater) rb.velocity = (ml.rotPoint.forward * axeZ + ml.rotPoint.right * axeX) * airSpeed * Time.deltaTime * moveSpeed + Vector3.up * rb.velocity.y;
-        else
+        if(isWater)
         {
             rb.velocity = (ml.rotPoint.forward * axeZ + ml.rotPoint.right * axeX) * waterSpeed * Time.deltaTime * moveSpeed + Vector3.up * (rb.velocity.y + 8 * Time.deltaTime);
             if (Input.GetButton("Jump"))

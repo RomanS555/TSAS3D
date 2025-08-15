@@ -6,13 +6,10 @@ using UnityEngine.Timeline;
 
 public class TimeLineSwither : MonoBehaviour
 {
-    PlayableDirector playableDirector;
-    void Start()
+    
+    public void SwitchTimeLine(PlayableDirector playableDirector)
     {
-        playableDirector = GetComponent<PlayableDirector>();
-    }
-    public void SwitchTimeLine(TimelineAsset clip)
-    {
-        playableDirector.Play(clip);
+        TimeLineScenes.stopTimeLineAction?.Invoke();
+        playableDirector.Play();
     }
 }
