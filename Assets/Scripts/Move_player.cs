@@ -44,7 +44,7 @@ public class Move_player : MonoBehaviour
         }
        
         
-    }
+    } 
     private void FixedUpdate()
     {
         isWater = Physics.CheckSphere(cam.transform.position, 1, Water);

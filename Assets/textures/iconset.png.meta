@@ -3,7 +3,7 @@ guid: d817490c98b8712499c1d59f4445c632
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -20,11 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -63,6 +64,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -74,6 +77,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -86,30 +90,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Server
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -119,10 +100,10 @@ TextureImporter:
       name: radio
       rect:
         serializedVersion: 2
-        x: 5
-        y: 544
-        width: 63
-        height: 54
+        x: 6
+        y: 537
+        width: 61
+        height: 57
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,19 +111,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ded152e60ae135d4ebffd6cabf2f7c9c
-      internalID: 228912724
+      spriteID: eafe4d6d7fd766840a49a4b0e5cc9b9d
+      internalID: 1795755767
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Nicolai
+      name: Nicolay
       rect:
         serializedVersion: 2
-        x: 99
-        y: 540
-        width: 50
+        x: 93
+        y: 539
+        width: 55
         height: 55
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -151,8 +132,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1fee3bda9b2e2594b8a075be18d2230f
-      internalID: 1859217586
+      spriteID: 65a5692f9f76b0f4facf9ce72d2c67ee
+      internalID: 1192606358
       vertices: []
       indices: 
       edges: []
@@ -160,7 +141,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 0673f75eb4231334ba22ac33dc37c5f0
+    spriteID: eca345762fdebd34aa45be3263f6e635
     internalID: 0
     vertices: []
     indices: 
@@ -168,11 +149,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Nicolai: 1859217586
-      radio: 228912724
-  spritePackingTag: 
+      Nicolay: 1192606358
+      radio: 1795755767
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

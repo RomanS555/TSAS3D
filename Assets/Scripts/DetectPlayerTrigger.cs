@@ -1,24 +1,24 @@
 using UnityEngine.Events;
 using UnityEngine;
+using System.Collections.Generic;
 
 
 public class DetectPlayerTrigger : MonoBehaviour
 {
-    [SerializeField] UnityEvent TriggerEvent;
-    Camera cam;
+    [SerializeField] List<UnityEvent> TriggerEvent;
+    int currentList;
+
     void Start()
     {
-        cam = Camera.main;
+
     }
-    void Update()
-    {
-        RaycastHit hit;
-        if (Physics.Raycast(cam.ScreenPointToRay(new Vector2(Screen.currentResolution.width / 2, Screen.currentResolution.height / 2)), out hit)){
-            
-        }
-    }
+
     public void ActivateTrigger()
     {
-        TriggerEvent?.Invoke();
+        TriggerEvent[currentList]?.Invoke();
+    }
+    public void SwitchEventList(int n)
+    {
+        currentList = n;
     }
 }

@@ -103,11 +103,12 @@ GameObject:
   - component: {fileID: 3086153229988057639}
   - component: {fileID: 3086153229988057638}
   - component: {fileID: 3086153229988057633}
-  - component: {fileID: 3086153229988057634}
   - component: {fileID: 3086153229988057635}
-  - component: {fileID: 3086153229988057637}
   - component: {fileID: 3047820483022695330}
+  - component: {fileID: 3086153229988057634}
+  - component: {fileID: 3086153229988057637}
   - component: {fileID: 8848525246901089836}
+  - component: {fileID: 282050183983971645}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -181,21 +182,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3086153229988057634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3086153229988057693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3555c04d631a4749b06ee1b720c41b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sensitivity: 12
-  maxAngle: 90
-  rotPoint: {fileID: 5927128756004130891}
 --- !u!54 &3086153229988057635
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -223,31 +209,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!114 &3086153229988057637
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3086153229988057693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03de150c314798349912c0c6b4a5337d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gravitation: 9.85
-  decceleration: 12
-  moveSpeed: 600
-  airSpeed: 0.4
-  maxSpeed: 33
-  jumpStrengh: 12
-  isGround: 0
-  WaterHUD: {fileID: 0}
-  velocity: {x: 0, y: 0, z: 0}
-  isWater: 0
-  Water:
-    serializedVersion: 2
-    m_Bits: 16
 --- !u!82 &3047820483022695330
 AudioSource:
   m_ObjectHideFlags: 0
@@ -344,6 +305,44 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3086153229988057634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3086153229988057693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3555c04d631a4749b06ee1b720c41b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sensitivity: 12
+  maxAngle: 90
+  rotPoint: {fileID: 5927128756004130891}
+--- !u!114 &3086153229988057637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3086153229988057693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03de150c314798349912c0c6b4a5337d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 600
+  airSpeed: 0.4
+  jumpStrengh: 12
+  waterSpeed: 0.8
+  isGround: 0
+  WaterHUD: {fileID: 0}
+  velocity: {x: 0, y: 0, z: 0}
+  isWater: 0
+  Water:
+    serializedVersion: 2
+    m_Bits: 16
 --- !u!65 &8848525246901089836
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -365,6 +364,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.99999994, y: 1.9999999, z: 0.99999994}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &282050183983971645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3086153229988057693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cb0c5e880f6c3e4d8b87428976b777a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4680843495818193271
 GameObject:
   m_ObjectHideFlags: 0
