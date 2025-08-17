@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class DetectPlayerTrigger : MonoBehaviour
 {
     [SerializeField] List<UnityEvent> TriggerEvent;
-    int currentList;
+    [SerializeField] int currentList;
 
     void Start()
     {
@@ -20,5 +20,9 @@ public class DetectPlayerTrigger : MonoBehaviour
     public void SwitchEventList(int n)
     {
         currentList = n;
+    }
+    public void DestroyObj(Object obj)
+    {
+        Destroy(obj);
     }
 }

@@ -7,6 +7,12 @@ public class MovedPlatform : MonoBehaviour
     [SerializeField] float speed = 5f;
     [SerializeField] Vector3 endPos;
     [SerializeField] Quaternion endRot;
+
+    void Start()
+    {
+        endPos = transform.position;
+        endRot = transform.rotation;
+    }
     public void MovePlatform(Transform tr)
     {
         endPos = tr.position;
