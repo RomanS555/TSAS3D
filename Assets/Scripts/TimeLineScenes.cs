@@ -10,8 +10,9 @@ public class TimeLineScenes : MonoBehaviour
     PlayableDirector pd;
     void Start()
     {
-        stopTimeLineAction += stopTimeLine;
         pd = GetComponent<PlayableDirector>();
+        stopTimeLineAction += stopTimeLine;
+        
     }
 
 

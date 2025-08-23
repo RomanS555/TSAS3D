@@ -9,12 +9,13 @@ public class Move_player : MonoBehaviour
         moveSpeed = 600,
         airSpeed = 0.4f,
         jumpStrengh = 10,
+        downStrengh = 4,
         waterSpeed = 0.8f;
-    [SerializeField] bool isGround;
+    [SerializeField] bool isGround, isWall,isWater;
     [SerializeField] GameObject WaterHUD;
     [SerializeField] private Vector3 velocity;
-    Collider grCheck;
-    [SerializeField]bool isWater;
+    [SerializeField]Collider wallCheck;
+    bool isMenu;
     float normalJump = 1, axeX, axeZ, jumpCooldown = 1, _jumpCD;
     Camera cam;
     [SerializeField]LayerMask Water;
@@ -22,17 +23,22 @@ public class Move_player : MonoBehaviour
     private Rigidbody rb;
     void Start()
     {
+        PlayerInputs.callInventory += stopMove;
         ml = GetComponent<MouseLook>();
         cam = Camera.main;
         rb = GetComponent<Rigidbody>();
-        grCheck = GetComponent<BoxCollider>();
+        
     }
-
+    void stopMove(bool b)
+    {
+        isMenu = b;
+    }
 
     void Update()
     {
-        axeX = Input.GetAxis("Horizontal");
-        axeZ = Input.GetAxis("Vertical");
+        
+        axeX = Input.GetAxis("Horizontal")* (!isMenu ? 1f : 0f);
+        axeZ = Input.GetAxis("Vertical")* (!isMenu ? 1f : 0f);
         if (Input.GetKeyDown(KeyCode.Space) && isGround && _jumpCD <= 0)
         {
             rb.velocity += transform.up * jumpStrengh * normalJump;
@@ -47,6 +53,8 @@ public class Move_player : MonoBehaviour
     } 
     private void FixedUpdate()
     {
+        
+        Vector3 moveVector = (ml.rotPoint.forward * axeZ + ml.rotPoint.right * axeX) * Time.deltaTime * moveSpeed;
         isWater = Physics.CheckSphere(cam.transform.position, 1, Water);
         if (WaterHUD) WaterHUD.SetActive(isWater);
 
@@ -61,22 +69,34 @@ public class Move_player : MonoBehaviour
             isGround = true;
         }
         else isGround = false;
-        Debug.Log(normalGround);
-        if (isGround) rb.velocity = (ml.rotPoint.forward * axeZ + ml.rotPoint.right * axeX) * normalGround * Time.deltaTime * moveSpeed + Vector3.up * rb.velocity.y;
-        else if (!isWater) rb.velocity = (ml.rotPoint.forward * axeZ + ml.rotPoint.right * axeX) * airSpeed * Time.deltaTime * moveSpeed + Vector3.up * rb.velocity.y;
-        if(isWater)
+        if (isGround) rb.velocity = moveVector* normalGround + Vector3.up * rb.velocity.y;
+        else if (!isWater) rb.velocity = moveVector* airSpeed + Vector3.up * rb.velocity.y;
+        float axisY = (Input.GetButton("Jump") ? 1f : 0f)*(jumpStrengh / 2f) - (Input.GetButton("Sit") ? 1f : 0f)*(downStrengh / 2f);
+        if (isWater)
         {
-            rb.velocity = (ml.rotPoint.forward * axeZ + ml.rotPoint.right * axeX) * waterSpeed * Time.deltaTime * moveSpeed + Vector3.up * (rb.velocity.y + 8 * Time.deltaTime);
-            if (Input.GetButton("Jump"))
+            rb.velocity = moveVector * waterSpeed + Vector3.up * (rb.velocity.y + 10 * Time.deltaTime);
+            if (axisY != 0)
             {
-                rb.velocity = Vector3.ClampMagnitude(rb.velocity +Vector3.up * jumpStrengh/2 * Time.deltaTime,8f);
+                rb.velocity = new Vector3(rb.velocity.x, Mathf.Clamp(rb.velocity.y + Time.deltaTime*axisY,-8f, 8f), rb.velocity.z);
             }
         }
         
     }
     
-    private void OnCollisionEnter(Collision other) {
-         
+    private void OnCollisionStay(Collision other) {
+        foreach (ContactPoint contactPoint in other.contacts)
+        {
+            if (contactPoint.thisCollider == wallCheck)
+            {
+                 if (!isGround)
+                    {
+                        axeX = 0;
+                        axeZ = 0;
+                    }
+            }
+        }
+           
+        
     }
 
     

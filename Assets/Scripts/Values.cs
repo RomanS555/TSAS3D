@@ -1,4 +1,5 @@
 
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,14 +10,35 @@ public class Values : MonoBehaviour
     public static float HP = 100;
     [SerializeField] float speedsubS = 0.2f;
     [SerializeField] AudioClip getSnickers;
-    [SerializeField] Slider slider;
-    [SerializeField] Slider HPbar;
-    AudioSource aS;
+    [SerializeField] Slider slider, HPbar;
+    public static List<int> InventoryS = new List<int>();
+    public static int[] itemBar = {-1,0,-1};
     public static float maxHP = 100;
     public const float maxSnickers = 100;
 
-    private void Start() {
-        aS = GetComponent<AudioSource>();
+    public void Add2Hp(float ahp)
+    {
+        HP += ahp;
+    }
+    public void Add2Snkrs(float asnkrs)
+    {
+        SnickersV += asnkrs;
+    }
+
+    public void AddItemToInventory(int item)
+    {
+        Debug.Log($"Добавлен предмет {item}");
+        InventoryS.Add(item);
+    }
+    public void RemoveItemInventoryAtIndex(int index)
+    {
+        InventoryS.RemoveAt(index);
+    }
+
+
+    private void Start()
+    {
+
     }
 
 
@@ -27,19 +49,4 @@ public class Values : MonoBehaviour
         SnickersV -= Time.deltaTime*speedsubS;
         
     }
-
-
-
-    private void OnCollisionEnter(Collision other) {
-    if(other.gameObject.tag == "Snickers"){
-        aS.PlayOneShot(getSnickers);
-        if(SnickersV +35 > 100){
-            SnickersV = 100;
-        }else {
-            SnickersV += 35;
-        }
-        Destroy(other.gameObject);
-    }
-}
-
 }
