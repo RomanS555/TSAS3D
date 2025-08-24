@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+[RequireComponent(typeof(CurrentWeapon))]
 public class playerTriggerCollision : MonoBehaviour
 {
     Camera cam;
+    CurrentWeapon cw;
     [SerializeField] Text texMessage;
     void Start()
     {
         cam = Camera.main;
+        cw = GetComponent<CurrentWeapon>();
     }
     void Update()
     {
@@ -25,7 +27,7 @@ public class playerTriggerCollision : MonoBehaviour
                     foreach (DetectPlayerTrigger dpt in DpTs)
                     {
                         if(dpt.isActiveAndEnabled)
-                        dpt.ActivateTrigger();
+                        dpt.ActivateTrigger(cw);
                     }  
                 }
 
@@ -45,7 +47,7 @@ public class playerTriggerCollision : MonoBehaviour
         DetectPlayerTrigger cpt;
         if (other.gameObject.TryGetComponent<DetectPlayerTrigger>(out cpt))
         {
-            cpt.ActivateTrigger();
+            cpt.ActivateTrigger(cw);
         }
     }
 }

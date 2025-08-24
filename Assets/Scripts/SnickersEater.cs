@@ -13,7 +13,7 @@ public class SnickersEater : MonoBehaviour
     {
         if (isFirst)
         {
-            dptIfFirstSnickersEated.ActivateTrigger();
+            dptIfFirstSnickersEated.ActivateTrigger(null);
             isFirst = false;
         }
         
@@ -24,7 +24,7 @@ public class SnickersEater : MonoBehaviour
         snCount = snickersParent.childCount;
         if (snickersParent.childCount==0)
         {
-            dptIfAllSnickersEated.ActivateTrigger();
+            dptIfAllSnickersEated.ActivateTrigger(null);
             Destroy(gameObject);
         }
     }

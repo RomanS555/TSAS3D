@@ -9,7 +9,7 @@ public class CurrentWeapon : MonoBehaviour
     
     [SerializeField] Image imageHand;
     [SerializeField] ItemIndex itemIndex;
-    InventoryItem itemInhotbar;
+    public InventoryItem itemInhotbar;
     public int currentItem = 0;
     void Start()
     {

@@ -5,20 +5,21 @@ using UnityEngine;
 [RequireComponent(typeof(playerTriggerCollision))]
 public class Move_player : MonoBehaviour
 {
+    
+    public bool isGround, isWall,isWater;
+    [SerializeField] GameObject WaterHUD;
+    [SerializeField] private Vector3 velocity;
+    [SerializeField]Collider wallCheck;
+    [SerializeField]LayerMask Water;
     [SerializeField] private float
         moveSpeed = 600,
         airSpeed = 0.4f,
         jumpStrengh = 10,
         downStrengh = 4,
         waterSpeed = 0.8f;
-    [SerializeField] bool isGround, isWall,isWater;
-    [SerializeField] GameObject WaterHUD;
-    [SerializeField] private Vector3 velocity;
-    [SerializeField]Collider wallCheck;
-    bool isMenu;
+    public bool isMenu;
     float normalJump = 1, axeX, axeZ, jumpCooldown = 1, _jumpCD;
     Camera cam;
-    [SerializeField]LayerMask Water;
     MouseLook ml;
     private Rigidbody rb;
     void Start()

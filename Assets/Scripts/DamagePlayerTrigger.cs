@@ -1,9 +1,9 @@
-using UnityEngine.Events;
-using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
 
-
-public class DetectPlayerTrigger : MonoBehaviour
+public class DamagePlayerTrigger : MonoBehaviour
 {
     [SerializeField] List<UnityEvent> TriggerEvent;
     [SerializeField] int currentList;

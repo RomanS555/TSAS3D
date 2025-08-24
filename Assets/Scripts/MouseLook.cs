@@ -31,7 +31,7 @@ public class MouseLook : MonoBehaviour
         float axeY = Input.GetAxis("Mouse Y")* (!isMenu ? 1f : 0f);
         rotPoint.Rotate(0,axeX*sensitivity,0);
         
-        rotY += axeY * sensitivity;
+        rotY -= axeY * sensitivity;
         rotY = Mathf.Clamp(rotY,-maxAngle,maxAngle);
         cam.transform.localEulerAngles = new Vector3(-rotY,0,0);
     }
