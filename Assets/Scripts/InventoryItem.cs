@@ -10,11 +10,12 @@ public class InventoryItem : ScriptableObject
     public string ItemName;
     [TextArea(3, 10)]
     public string ItemDescritpion;
-    public Sprite ItemIcon, ItemInHand;
+    public Sprite ItemIcon, ItemInHand, particleOnAction;
     public InteractType interact = InteractType.none;
     public bool longPressInteraction = false;
     public float interactCoolDown = 0.2f;
-
+    public AudioClip soundOnInteract;
+    
 
 
     

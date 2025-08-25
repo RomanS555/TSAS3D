@@ -9,6 +9,7 @@ public class PlayerInputs : MonoBehaviour
     public static Action<bool> callInventory;
     [SerializeField] GameObject inventoryTr, prefabBulletHole;
     [SerializeField] ItemIndex itemIndex;
+    AudioSource audioSource;
 
     ItemAnimations itemAnimations;
     float interactCoolDown = 0f;
@@ -17,6 +18,7 @@ public class PlayerInputs : MonoBehaviour
     bool inInventory = false;
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         cam = Camera.main;
         itemAnimations = GetComponent<ItemAnimations>();
         cw = GetComponent<CurrentWeapon>();
@@ -61,10 +63,14 @@ public class PlayerInputs : MonoBehaviour
     void interactItem(InventoryItem _item)
     {
         interactCoolDown = 0;
+        if (_item.soundOnInteract)
+        {
+            audioSource.PlayOneShot(_item.soundOnInteract);
+        }
         switch (_item.interact)
         {
             case InventoryItem.InteractType.shooting:
-                Damage(250f);
+                Damage(500f);
                 itemAnimations.Fire();
                 break;
             case InventoryItem.InteractType.punch:

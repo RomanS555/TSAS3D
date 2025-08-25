@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +8,7 @@ public class CurrentWeapon : MonoBehaviour
 {
 
     
-    [SerializeField] Image imageHand;
+    [SerializeField] Image imageHand, effectInteract;
     [SerializeField] ItemIndex itemIndex;
     public InventoryItem itemInhotbar;
     public int currentItem = 0;
@@ -24,6 +25,11 @@ public class CurrentWeapon : MonoBehaviour
         if (itemInhotbar)
         {
             imageHand.sprite = itemInhotbar.ItemInHand;
+            if (effectInteract)
+            {
+                effectInteract.sprite = itemInhotbar.particleOnAction;
+            }   
+            
         }
 
     }
