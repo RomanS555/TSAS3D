@@ -5,4 +5,12 @@ using UnityEngine;
 public class MouseLookMessage : MonoBehaviour
 {
     public string message;
+    void Start()
+    {
+
+    }
+    public void ChangeMessage(string m)
+    {
+        message = m;
+    }
 }

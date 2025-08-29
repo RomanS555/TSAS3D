@@ -24,9 +24,8 @@ public class ItemAnimations : MonoBehaviour
     }
     public void Punch()
     {
-        animator.ResetTrigger("Punch");
-        animator.SetTrigger("Punch");
-        
+        animator.Play("Punch",-1, 0f);
+               
     }
     public void Fire()
     {

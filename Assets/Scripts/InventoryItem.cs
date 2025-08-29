@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using NaughtyAttributes;
 using UnityEngine;
 
 
@@ -15,8 +16,10 @@ public class InventoryItem : ScriptableObject
     public bool longPressInteraction = false;
     public float interactCoolDown = 0.2f;
     public AudioClip soundOnInteract;
-    
-
+    [ShowIf("isWeapon")]
+    [Min(0)]
+    public float DamageWeapon, KnockBack;
+    bool isWeapon => interact == InteractType.punch || interact == InteractType.shooting;
 
     
 

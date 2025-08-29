@@ -3,9 +3,9 @@ using UnityEngine;
 using System.Collections.Generic;
 
 
-public class DetectPlayerTrigger : MonoBehaviour
+public class DetectPlayerTrigger : EventParent
 {
-    [SerializeField] List<UnityEvent> TriggerEvent;
+    [SerializeField] List<UnityEvent<CurrentWeapon>> TriggerEvent;
     [SerializeField] int currentList;
     [SerializeField] InventoryItem requireItem;
 
@@ -17,15 +17,12 @@ public class DetectPlayerTrigger : MonoBehaviour
     public void ActivateTrigger(CurrentWeapon pl)
     {
         if(!requireItem || !pl || requireItem == pl?.itemInhotbar)
-        TriggerEvent[currentList]?.Invoke();
+        TriggerEvent[currentList]?.Invoke(pl);
         
     }
     public void SwitchEventList(int n)
     {
         currentList = n;
     }
-    public void DestroyObj(Object obj)
-    {
-        Destroy(obj);
-    }
+   
 }

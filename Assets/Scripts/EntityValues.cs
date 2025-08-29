@@ -1,13 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
+using NaughtyAttributes;
 using UnityEngine;
 
 public class EntityValues : MonoBehaviour
 {
+    
     [SerializeField] float health;
     public void ChangeHp(float delta)
     {
         health += delta;
+    }
+    public void TakePlayerDamage(CurrentWeapon pl)
+    {
+        health -= pl.itemInhotbar.DamageWeapon;
     }
     void Update()
     {

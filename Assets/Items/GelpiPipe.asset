@@ -24,3 +24,5 @@ MonoBehaviour:
   longPressInteraction: 0
   interactCoolDown: 0.5
   soundOnInteract: {fileID: 8300000, guid: af45deeb35e9f79448be83e8672166f6, type: 3}
+  DamageWeapon: 6.883
+  KnockBack: 30

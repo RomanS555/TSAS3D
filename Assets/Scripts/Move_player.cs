@@ -16,19 +16,23 @@ public class Move_player : MonoBehaviour
         airSpeed = 0.4f,
         jumpStrengh = 10,
         downStrengh = 4,
-        waterSpeed = 0.8f;
+        waterSpeed = 0.8f,
+        moveShakeCameraAmplitude = .6f,
+        moveShakeCameraFreq = .3f;
     public bool isMenu;
     float normalJump = 1, axeX, axeZ, jumpCooldown = 1, _jumpCD;
     Camera cam;
     MouseLook ml;
     private Rigidbody rb;
+    float startY = 0f;
+    float t = 0;
     void Start()
     {
         PlayerInputs.callInventory += stopMove;
         ml = GetComponent<MouseLook>();
         cam = Camera.main;
         rb = GetComponent<Rigidbody>();
-        
+        startY = cam.transform.localPosition.y;
     }
     void stopMove(bool b)
     {
@@ -37,7 +41,11 @@ public class Move_player : MonoBehaviour
 
     void Update()
     {
-        
+        if(new Vector2(axeX,axeZ).magnitude != 0)t += Time.deltaTime;
+        if (t > Mathf.PI * 2)
+        {
+            t = 0;
+        }
         axeX = Input.GetAxis("Horizontal")* (!isMenu ? 1f : 0f);
         axeZ = Input.GetAxis("Vertical")* (!isMenu ? 1f : 0f);
         if (Input.GetKeyDown(KeyCode.Space) && isGround && _jumpCD <= 0)
@@ -49,7 +57,7 @@ public class Move_player : MonoBehaviour
         {
             _jumpCD -= Time.deltaTime;
         }
-       
+        
         
     } 
     private void FixedUpdate()
@@ -58,7 +66,7 @@ public class Move_player : MonoBehaviour
         Vector3 moveVector = (ml.rotPoint.forward * axeZ + ml.rotPoint.right * axeX) * Time.deltaTime * moveSpeed;
         isWater = Physics.CheckSphere(cam.transform.position, 1, Water);
         if (WaterHUD) WaterHUD.SetActive(isWater);
-
+        cam.transform.localPosition = Vector3.up * (startY + moveShakeCameraAmplitude*Mathf.Sin( t * moveShakeCameraFreq));
 
         float normalGround = 1;
         RaycastHit hit;
